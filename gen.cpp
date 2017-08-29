@@ -1,534 +1,534 @@
 #include "gen.hpp"
 #include <cstring>
 #include <iostream>
-
+ 
 using namespace std;
-
+ 
 //template<class T>
-
-//¡LTAL¡NOS TAGF‹GGV…NYEK
-
-	//T÷MB ELEMSZ¡M¡NAK LEK…RDEZ…SE
-	template<class T>	
-	int Gen<T>::Getdb()
+ 
+//√ÅLTAL√ÅNOS TAGF√úGGV√âNYEK
+ 
+    //T√ñMB ELEMSZ√ÅM√ÅNAK LEK√âRDEZ√âSE
+    template<class T> 
+    int Gen<T>::Getdb()
 {
-	return this->db;
+    return this->db;
 }
-
-	/*//ELEMSZ¡M N÷VEL…S
-	template<class T>
-	void Gen<T>:: novel()
+ 
+    /*//ELEMSZ√ÅM N√ñVEL√âS
+    template<class T>
+    void Gen<T>:: novel()
 {
-	db++;
-	delete[] t;
-	t=new T[db];
+    db++;
+    delete[] t;
+    t=new T[db];
 }*/
-			
-//SHELL RENDEZ…SEK
-	//SZ¡M ÷SSZEHASONLÕT” F‹GGV…NY
-	template<class T>
-	int Gen<T>::compare(T a, T b)
+             
+//SHELL RENDEZ√âSEK
+    //SZ√ÅM √ñSSZEHASONL√çT√ì F√úGGV√âNY
+    template<class T>
+    int Gen<T>::compare(T a, T b)
 {
-	if(a>b) return 1;
-	else if(b>a) return -1;
-	return 0;
+    if(a>b) return 1;
+    else if(b>a) return -1;
+    return 0;
 }
-
-	//CHAR* SHELLJE
-	template<class T>
-	void Gen<T>::strshell(int n)
+ 
+    //CHAR* SHELLJE
+    template<class T>
+    void Gen<T>::strshell(int n)
 {
-	if(n>=0) n=1;
-	else n=-1;
-	int j,i,m;
-	char* temp;
-	for(m = this->Getdb()/2;m>0;m/=2)
-	{
-		for(j = m;j< this->Getdb();j++)
-		{
-			for(i=j-m;i>=0;i-=m)
-			{
-				if(strcmp(this->t[i+m],this->t[i])!=n)
-				{
-					temp = this->t[i];
-					this->t[i] = this->t[i+m];
-					this->t[i+m] = temp;
-				}
-			}
-
-		}
-	}
+    if(n>=0) n=1;
+    else n=-1;
+    int j,i,m;
+    char* temp;
+    for(m = this->Getdb()/2;m>0;m/=2)
+    {
+        for(j = m;j< this->Getdb();j++)
+        {
+            for(i=j-m;i>=0;i-=m)
+            {
+                if(strcmp(this->t[i+m],this->t[i])!=n)
+                {
+                    temp = this->t[i];
+                    this->t[i] = this->t[i+m];
+                    this->t[i+m] = temp;
+                }
+            }
+ 
+        }
+    }
 }
-
-	//SZ¡MOK SHELLJE
-	template<class T>
-	void Gen<T>::shell(int n)
+ 
+    //SZ√ÅMOK SHELLJE
+    template<class T>
+    void Gen<T>::shell(int n)
 {
-	if(n>=0) n=1;
-	else n=-1;
-	int j,i,m;
-	T temp;
-	for(m = this->Getdb()/2;m>0;m/=2)
-	{
-		for(j = m;j< this->Getdb();j++)
-		{
-			for(i=j-m;i>=0;i-=m)
-			{
-				if(compare(this->t[i+m],this->t[i])!=n)
-				{
-					temp = this->t[i];
-					this->t[i] = this->t[i+m];
-					this->t[i+m] = temp;
-				}
-			}
-
-		}
-	}
+    if(n>=0) n=1;
+    else n=-1;
+    int j,i,m;
+    T temp;
+    for(m = this->Getdb()/2;m>0;m/=2)
+    {
+        for(j = m;j< this->Getdb();j++)
+        {
+            for(i=j-m;i>=0;i-=m)
+            {
+                if(compare(this->t[i+m],this->t[i])!=n)
+                {
+                    temp = this->t[i];
+                    this->t[i] = this->t[i+m];
+                    this->t[i+m] = temp;
+                }
+            }
+ 
+        }
+    }
 }
-
-//KIÕRAT¡S
-	template<class T>
-	void Gen<T>::Print()
-	{ 	iterator i1;
-		int i=0;
-		for(i1=this->begin();i1!=this->end();i++, i1++)
-		{
-			cout<<"A "<<i<<". elem: "<<*i1<<endl;
-		}
-	}
-
-//INDEXOPER¡TOR
-	template<class T>
-	T& Gen<T>::operator[](int i)
-	{
-		if(i<0 || i>=this->Getdb()) throw "rossz indexeles";
-		return this->t[i];
-	}
-	
-//EGYENL’S…G OPER¡TOR
-	template<class T>
-	int Gen<T>::operator==(Gen<T>& e)
+ 
+//KI√çRAT√ÅS
+    template<class T>
+    void Gen<T>::Print()
+    {   iterator i1;
+        int i=0;
+        for(i1=this->begin();i1!=this->end();i++, i1++)
+        {
+            cout<<"A "<<i<<". elem: "<<*i1<<endl;
+        }
+    }
+ 
+//INDEXOPER√ÅTOR
+    template<class T>
+    T& Gen<T>::operator[](int i)
+    {
+        if(i<0 || i>=this->Getdb()) throw "rossz indexeles";
+        return this->t[i];
+    }
+     
+//EGYENL√ïS√âG OPER√ÅTOR
+    template<class T>
+    int Gen<T>::operator==(Gen<T>& e)
 {
-	if(this->db==e.db)
-	{
-		for(int i=0;i<e.db;i++)
-		{
-			if(e[i]!=t[i])
-			{
-				return 0;
-			}
-		}
-		return 1;
-	}
-	return 0;
+    if(this->db==e.db)
+    {
+        for(int i=0;i<e.db;i++)
+        {
+            if(e[i]!=t[i])
+            {
+                return 0;
+            }
+        }
+        return 1;
+    }
+    return 0;
 }
-//…RT…KAD” OPER¡TOR
-	template<class T>
-	Gen<T>& Gen<T>::operator=(const Gen<T>& a)
-	{
-		if(this!=&a)
-		{
-			this->db=a.db;
-			delete[] this->t;
-			this->t=new T[a.db];
-			for(int i=0;i<a.db;i++)
-			{
-				this->t[i]=a.t[i];
-			}
-		}
-		return *this;
-	}
-	
-//2 T÷MB ELEMEINEK ÷SSZEAD¡SA
-	template<class T>
-	Gen<T> Gen<T>::operator+(Gen<T>& d)
+//√âRT√âKAD√ì OPER√ÅTOR
+    template<class T>
+    Gen<T>& Gen<T>::operator=(const Gen<T>& a)
+    {
+        if(this!=&a)
+        {
+            this->db=a.db;
+            delete[] this->t;
+            this->t=new T[a.db];
+            for(int i=0;i<a.db;i++)
+            {
+                this->t[i]=a.t[i];
+            }
+        }
+        return *this;
+    }
+     
+//2 T√ñMB ELEMEINEK √ñSSZEAD√ÅSA
+    template<class T>
+    Gen<T> Gen<T>::operator+(Gen<T>& d)
 {
-	iterator i1, i2, i3;
-	i1=this->begin();
-	i2=d.begin();
-	int darab;
-
-	if(d.Getdb()>this->Getdb()) 
-	{
-		darab=this->Getdb();
-	}
-	else 
-	{
-		darab =d.Getdb();
-	}
-	Gen<T> v(darab);
-
-	i3=v.begin();
-	for(int i=0;(i3!=v.end())&&(i2!=d.end())&&(i1!=this->end());i++,i3++, i1++, i2++)
-	{	
-		*i3=*i1+*i2;
-	}
-	return v;
+    iterator i1, i2, i3;
+    i1=this->begin();
+    i2=d.begin();
+    int darab;
+ 
+    if(d.Getdb()>this->Getdb()) 
+    {
+        darab=this->Getdb();
+    }
+    else
+    {
+        darab =d.Getdb();
+    }
+    Gen<T> v(darab);
+ 
+    i3=v.begin();
+    for(int i=0;(i3!=v.end())&&(i2!=d.end())&&(i1!=this->end());i++,i3++, i1++, i2++)
+    {   
+        *i3=*i1+*i2;
+    }
+    return v;
 }
-	template<class T>
-	Gen<T>& Gen<T>::operator+=(Gen<T>& d)
+    template<class T>
+    Gen<T>& Gen<T>::operator+=(Gen<T>& d)
 {
-	iterator i1, i2;
-	i1=this->begin();
-	i2=d.begin();
-	while((i1!=this->end())&&(i2!=d.end()))
-	{	
-		*i1+=*i2;
-		i1++;
-		i2++;
-	}
-	return *this;
+    iterator i1, i2;
+    i1=this->begin();
+    i2=d.begin();
+    while((i1!=this->end())&&(i2!=d.end()))
+    {   
+        *i1+=*i2;
+        i1++;
+        i2++;
+    }
+    return *this;
 }
-	
-//T÷MB ELEMEIHEZ EGY VAL”S SZ¡M HOZZ¡AD¡SA
-	template<class T>
-	Gen<T> Gen<T>::operator+(double elem)
+     
+//T√ñMB ELEMEIHEZ EGY VAL√ìS SZ√ÅM HOZZ√ÅAD√ÅSA
+    template<class T>
+    Gen<T> Gen<T>::operator+(double elem)
 {
-	iterator i1, i2;
-	i1=this->begin();
-	int darab=this->Getdb();
-	Gen<T> v(darab);
-	i2=v.begin();
-
-	for(int i=0;(i1!=this->end())&&(i2!=v.end());i++, i1++, i2++)
-	{	
-		*i2=*i1+ (T)elem;
-	}
-	return v;
+    iterator i1, i2;
+    i1=this->begin();
+    int darab=this->Getdb();
+    Gen<T> v(darab);
+    i2=v.begin();
+ 
+    for(int i=0;(i1!=this->end())&&(i2!=v.end());i++, i1++, i2++)
+    {   
+        *i2=*i1+ (T)elem;
+    }
+    return v;
 }
-	template<class T>
-	Gen<T>& Gen<T>::operator+=(double elem)
+    template<class T>
+    Gen<T>& Gen<T>::operator+=(double elem)
 {
-	iterator i1;
-	i1=this->begin();
-	while(i1!=this->end())
-	{	
-		*i1+= (T)elem;
-		i1++;
-			
-	}
-	return *this;
+    iterator i1;
+    i1=this->begin();
+    while(i1!=this->end())
+    {   
+        *i1+= (T)elem;
+        i1++;
+             
+    }
+    return *this;
 }
-	
-//M¡SIK T÷MBBEL VAL” SZORZ¡S
-	template<class T>
-	Gen<T> Gen<T>::operator*(Gen<T>& d)
+     
+//M√ÅSIK T√ñMBBEL VAL√ì SZORZ√ÅS
+    template<class T>
+    Gen<T> Gen<T>::operator*(Gen<T>& d)
 {
-
-	iterator i1, i2, i3;
-	i1=this->begin();
-	i2=d.begin();
-	int darab;
-
-	if(d.Getdb()>this->Getdb()) 
-	{
-		darab=this->Getdb();
-	}
-	else 
-	{
-		darab =d.Getdb();
-	}
-	Gen<T> v(darab);
-
-	i3=v.begin();
-	for(int i=0;(i3!=v.end())&&(i2!=d.end())&&(i1!=this->end());i++,i3++, i1++, i2++)
-	{	
-		*i3=*i1 * *i2;
-	}
-	return v;
-
+ 
+    iterator i1, i2, i3;
+    i1=this->begin();
+    i2=d.begin();
+    int darab;
+ 
+    if(d.Getdb()>this->Getdb()) 
+    {
+        darab=this->Getdb();
+    }
+    else
+    {
+        darab =d.Getdb();
+    }
+    Gen<T> v(darab);
+ 
+    i3=v.begin();
+    for(int i=0;(i3!=v.end())&&(i2!=d.end())&&(i1!=this->end());i++,i3++, i1++, i2++)
+    {   
+        *i3=*i1 * *i2;
+    }
+    return v;
+ 
 }
-	template<class T>
-	Gen<T>& Gen<T>::operator*=(Gen<T>& d)
+    template<class T>
+    Gen<T>& Gen<T>::operator*=(Gen<T>& d)
 {
-	iterator i1, i2;
-	i1=this->begin();
-	i2=d.begin();
-	while((i1!=this->end())&&(i2!=d.end()))
-	{	
-		*i1 *= *i2;
-		i1++;
-		i2++;
-	}
-	return *this;
+    iterator i1, i2;
+    i1=this->begin();
+    i2=d.begin();
+    while((i1!=this->end())&&(i2!=d.end()))
+    {   
+        *i1 *= *i2;
+        i1++;
+        i2++;
+    }
+    return *this;
 }
-	
-//VAL”S SZ¡MMAL VAL” SZORZ¡S
-	template<class T>
-	Gen<T> Gen<T>::operator*(double elem)
+     
+//VAL√ìS SZ√ÅMMAL VAL√ì SZORZ√ÅS
+    template<class T>
+    Gen<T> Gen<T>::operator*(double elem)
 {
-	iterator i1, i2;
-	i1=this->begin();
-	int darab=this->Getdb();
-	Gen<T> v(darab);
-	i2=v.begin();
-
-	for(int i=0;(i1!=this->end())&&(i2!=v.end());i++, i1++, i2++)
-	{	
-		*i2=*i1 * (T)elem;
-	}
-	return v;
+    iterator i1, i2;
+    i1=this->begin();
+    int darab=this->Getdb();
+    Gen<T> v(darab);
+    i2=v.begin();
+ 
+    for(int i=0;(i1!=this->end())&&(i2!=v.end());i++, i1++, i2++)
+    {   
+        *i2=*i1 * (T)elem;
+    }
+    return v;
 }
-	template<class T>
-	Gen<T>& Gen<T>::operator*=(double elem)
+    template<class T>
+    Gen<T>& Gen<T>::operator*=(double elem)
 {
-	iterator i1;
-	i1=this->begin();
-	while(i1!=this->end())
-	{	
-		*i1 *= (T)elem;
-		i1++;
-			
-	}
-	return *this;
+    iterator i1;
+    i1=this->begin();
+    while(i1!=this->end())
+    {   
+        *i1 *= (T)elem;
+        i1++;
+             
+    }
+    return *this;
 }
-
-//T÷MB÷K ELEMEINEK KIVON¡SA
-	template<class T>
-	Gen<T> Gen<T>::operator-(Gen<T>& d)
+ 
+//T√ñMB√ñK ELEMEINEK KIVON√ÅSA
+    template<class T>
+    Gen<T> Gen<T>::operator-(Gen<T>& d)
 {
-	iterator i1, i2, i3;
-	i1=this->begin();
-	i2=d.begin();
-	int darab;
-
-	if(d.Getdb()>this->Getdb()) 
-	{
-		darab=this->Getdb();
-	}
-	else 
-	{
-		darab =d.Getdb();
-	}
-	Gen<T> v(darab);
-
-	i3=v.begin();
-	for(int i=0;(i3!=v.end())&&(i2!=d.end())&&(i1!=this->end());i++,i3++, i1++, i2++)
-	{	
-		*i3=*i1 - *i2;
-	}
-	return v;
+    iterator i1, i2, i3;
+    i1=this->begin();
+    i2=d.begin();
+    int darab;
+ 
+    if(d.Getdb()>this->Getdb()) 
+    {
+        darab=this->Getdb();
+    }
+    else
+    {
+        darab =d.Getdb();
+    }
+    Gen<T> v(darab);
+ 
+    i3=v.begin();
+    for(int i=0;(i3!=v.end())&&(i2!=d.end())&&(i1!=this->end());i++,i3++, i1++, i2++)
+    {   
+        *i3=*i1 - *i2;
+    }
+    return v;
 }
-	template<class T>
-	Gen<T>& Gen<T>::operator-=(Gen<T>& d)
+    template<class T>
+    Gen<T>& Gen<T>::operator-=(Gen<T>& d)
 {
-	iterator i1, i2;
-	i1=this->begin();
-	i2=d.begin();
-	while((i1!=this->end())&&(i2!=d.end()))
-	{	
-		*i1 -= *i2;
-		i1++;
-		i2++;
-	}
-	return *this;
+    iterator i1, i2;
+    i1=this->begin();
+    i2=d.begin();
+    while((i1!=this->end())&&(i2!=d.end()))
+    {   
+        *i1 -= *i2;
+        i1++;
+        i2++;
+    }
+    return *this;
 }
-	
-//T÷MB÷K ELEMEIB’L EGY VAL”S SZ¡M KIVON¡SA
-	template<class T>
-	Gen<T> Gen<T>::operator-(double elem)
+     
+//T√ñMB√ñK ELEMEIB√ïL EGY VAL√ìS SZ√ÅM KIVON√ÅSA
+    template<class T>
+    Gen<T> Gen<T>::operator-(double elem)
 {
-	iterator i1, i2;
-	i1=this->begin();
-	int darab=this->Getdb();
-	Gen<T> v(darab);
-	i2=v.begin();
-
-	for(int i=0;(i1!=this->end())&&(i2!=v.end());i++, i1++, i2++)
-	{	
-		*i2=*i1 - (T)elem;
-	}
-	return v;
+    iterator i1, i2;
+    i1=this->begin();
+    int darab=this->Getdb();
+    Gen<T> v(darab);
+    i2=v.begin();
+ 
+    for(int i=0;(i1!=this->end())&&(i2!=v.end());i++, i1++, i2++)
+    {   
+        *i2=*i1 - (T)elem;
+    }
+    return v;
 }
-	template<class T>
-	Gen<T>& Gen<T>::operator-=(double elem)
+    template<class T>
+    Gen<T>& Gen<T>::operator-=(double elem)
 {
-	iterator i1;
-	i1=this->begin();
-	while(i1!=this->end())
-	{	
-		*i1 -= (T)elem;
-		i1++;
-			
-	}
-	return *this;
+    iterator i1;
+    i1=this->begin();
+    while(i1!=this->end())
+    {   
+        *i1 -= (T)elem;
+        i1++;
+             
+    }
+    return *this;
 }
-/*	
-//⁄J ELEM HOZZ¡AD¡SA A T÷MB V…G…RE
-	template<class T>
-	Gen<T>& Gen<T>::Add(T  elem)
+/*  
+//√öJ ELEM HOZZ√ÅAD√ÅSA A T√ñMB V√âG√âRE
+    template<class T>
+    Gen<T>& Gen<T>::Add(T  elem)
 {
-	int i;
-	iterator i1, i2;
-	i1=this->begin();
-	Gen<T> v(this->Getdb());
-	i2=v.begin();
-	for(i=0;(i1!=this->end()) && (i2!=v.end());i++, i2++, i1++)
-	{
-		*i2=*i1;
-	}
-
-	this->novel();
-	i1=this->begin();
-	i2=v.begin();
-	for(i=0;(i1!=this->end()) && (i2!=v.end());i++, i2++, i1++)
-	{
-		*i1=*i2;
-	}
-	*i1=elem;
-	return *this;
+    int i;
+    iterator i1, i2;
+    i1=this->begin();
+    Gen<T> v(this->Getdb());
+    i2=v.begin();
+    for(i=0;(i1!=this->end()) && (i2!=v.end());i++, i2++, i1++)
+    {
+        *i2=*i1;
+    }
+ 
+    this->novel();
+    i1=this->begin();
+    i2=v.begin();
+    for(i=0;(i1!=this->end()) && (i2!=v.end());i++, i2++, i1++)
+    {
+        *i1=*i2;
+    }
+    *i1=elem;
+    return *this;
 }
-
-///L…TEZ’ ELEM ¡TÕR¡SA	
-	template<class T>
-	Gen<T>& Gen<T>::Over(int hanyadik, T  elem)
-	{
-		if((hanyadik>=this->Getdb())||(hanyadik<0)) throw "rossz indexeles";
-		this->t[hanyadik]=elem;
-		return *this;
-	}*/
-
+ 
+///L√âTEZ√ï ELEM √ÅT√çR√ÅSA  
+    template<class T>
+    Gen<T>& Gen<T>::Over(int hanyadik, T  elem)
+    {
+        if((hanyadik>=this->Getdb())||(hanyadik<0)) throw "rossz indexeles";
+        this->t[hanyadik]=elem;
+        return *this;
+    }*/
+ 
 //STRINGEK
-	template<class T>
-	void Gen<T>::StrLenAvg()
+    template<class T>
+    void Gen<T>::StrLenAvg()
 {
-	int szum=0;
-	for(int i=0;i<this->Getdb();i++)
-	{
-		szum+=strlen(this->t[i]);
-	}
-	cout<<"Atlagos szohossz: "<< (double)szum/(double)this->Getdb()<<endl<<endl;
+    int szum=0;
+    for(int i=0;i<this->Getdb();i++)
+    {
+        szum+=strlen(this->t[i]);
+    }
+    cout<<"Atlagos szohossz: "<< (double)szum/(double)this->Getdb()<<endl<<endl;
 }
-	
-	template<class T>
-	void Gen<T>::StrLenMax()
+     
+    template<class T>
+    void Gen<T>::StrLenMax()
 {
-	int max=0;
-	for(int i=0;i<this->Getdb();i++)
-	{
-		if(strlen(this->t[i])>strlen(this->t[max]))
-		{
-			max=i;
-		}
-	}
-	cout<<endl<<"Leghosszabb szo: "<< this->t[max]<<"\t Betuk szama: "<<strlen(this->t[max])<<endl<<endl;
+    int max=0;
+    for(int i=0;i<this->Getdb();i++)
+    {
+        if(strlen(this->t[i])>strlen(this->t[max]))
+        {
+            max=i;
+        }
+    }
+    cout<<endl<<"Leghosszabb szo: "<< this->t[max]<<"\t Betuk szama: "<<strlen(this->t[max])<<endl<<endl;
 }
-	
-	template<class T>
-	void Gen<T>::StrLenMin()
+     
+    template<class T>
+    void Gen<T>::StrLenMin()
 {
-	int max=0;
-	for(int i=1;i<this->Getdb();i++)
-	{
-		if(strlen(this->t[i])<strlen(this->t[max]))
-		{
-			max=i;
-		}
-	}
-	cout<<endl<<"Legrovidebb szo: "<< this->t[max]<<"\t Betuk szama: "<<strlen(this->t[max])<<endl<<endl;
+    int max=0;
+    for(int i=1;i<this->Getdb();i++)
+    {
+        if(strlen(this->t[i])<strlen(this->t[max]))
+        {
+            max=i;
+        }
+    }
+    cout<<endl<<"Legrovidebb szo: "<< this->t[max]<<"\t Betuk szama: "<<strlen(this->t[max])<<endl<<endl;
 }
-
-
+ 
+ 
 //SZAMOKRA
-	template<class T>
-	void Gen<T>::Modusz()
+    template<class T>
+    void Gen<T>::Modusz()
 {
-	iterator i=this->begin();
-	iterator k=this->begin();
-	int n=0;
-	int *hanyszor;
-	int j=0;
-	hanyszor=new int[this->Getdb()];
-	for(int p=0;p<this->Getdb();p++) hanyszor[p]=0;
-
-	for(i=this->begin();i!=this->end();i++,j++)
-	{
-		for(k=this->begin();k!=this->end();k++)
-		{
-			if(*i==*k) hanyszor[j]++;
-		}
-	}
-	int max=0;
-	int maxi=0;
-	for(int h=0;h<n;h++)
-	{
-		if(hanyszor[h]>max) maxi=h;
-	}
-	cout<<"A legtobbszor elofordulo elem: "<<this->t[maxi]<<"\t elofordulasok szama: "<<hanyszor[maxi]<<endl<<endl;
-	delete[] hanyszor;
+    iterator i=this->begin();
+    iterator k=this->begin();
+    int n=0;
+    int *hanyszor;
+    int j=0;
+    hanyszor=new int[this->Getdb()];
+    for(int p=0;p<this->Getdb();p++) hanyszor[p]=0;
+ 
+    for(i=this->begin();i!=this->end();i++,j++)
+    {
+        for(k=this->begin();k!=this->end();k++)
+        {
+            if(*i==*k) hanyszor[j]++;
+        }
+    }
+    int max=0;
+    int maxi=0;
+    for(int h=0;h<n;h++)
+    {
+        if(hanyszor[h]>max) maxi=h;
+    }
+    cout<<"A legtobbszor elofordulo elem: "<<this->t[maxi]<<"\t elofordulasok szama: "<<hanyszor[maxi]<<endl<<endl;
+    delete[] hanyszor;
 } 
-	
-	template<class T>
-	void Gen<T>::Median()
+     
+    template<class T>
+    void Gen<T>::Median()
 {
-		
-	this->shell(1);
-	if(this->Getdb()%2==0)
-	{
-		int i=this->Getdb()/2;
-		int k=i-1;
-		double avg= ((double)this->t[k]+(double)this->t[i])/2;
-		cout<<endl<<endl<<"A kozepso ket elem: "<<this->t[k]<<" es "<<this->t[i]<<". Atlaguk: " <<avg<<endl;
-	}
-	else
-	{
-		int j=this->Getdb()/2+1;
-		cout<<endl<<endl<<"A kozepso elem: "<<this->t[j]<<endl;
-	}
+         
+    this->shell(1);
+    if(this->Getdb()%2==0)
+    {
+        int i=this->Getdb()/2;
+        int k=i-1;
+        double avg= ((double)this->t[k]+(double)this->t[i])/2;
+        cout<<endl<<endl<<"A kozepso ket elem: "<<this->t[k]<<" es "<<this->t[i]<<". Atlaguk: " <<avg<<endl;
+    }
+    else
+    {
+        int j=this->Getdb()/2+1;
+        cout<<endl<<endl<<"A kozepso elem: "<<this->t[j]<<endl;
+    }
 }
-	
-	template<class T>
-	T Gen<T>::GetMax()
+     
+    template<class T>
+    T Gen<T>::GetMax()
 {
-	iterator i1=this->begin();
-	T max=0;
-	for(int i=1;i1!=this->end();i++,i1++)
-	{
-		if(max<*i1)
-		{
-			max=*i1;
-		}
-	}
-	return max;
+    iterator i1=this->begin();
+    T max=0;
+    for(int i=1;i1!=this->end();i++,i1++)
+    {
+        if(max<*i1)
+        {
+            max=*i1;
+        }
+    }
+    return max;
 }
-	
-	template<class T>
-	T Gen<T>::GetMin()
+     
+    template<class T>
+    T Gen<T>::GetMin()
 {
-	iterator i1=this->begin();
-	T min=*i1;
-	i1++;
-	for(int i=1;i1!=this->end();i++,i1++)
-	{
-		if(min>*i1)
-		{
-			min=*i1;
-		}
-	}
-	return min;
+    iterator i1=this->begin();
+    T min=*i1;
+    i1++;
+    for(int i=1;i1!=this->end();i++,i1++)
+    {
+        if(min>*i1)
+        {
+            min=*i1;
+        }
+    }
+    return min;
 }
-	
-	template<class T>
-	T Gen<T>::GetSum()
+     
+    template<class T>
+    T Gen<T>::GetSum()
 {
-	iterator i1=this->begin();
-	T szum=0;
-	for(int i=0;i1!=this->end();i++,i1++) szum+=*i1;
-	return szum;
-
+    iterator i1=this->begin();
+    T szum=0;
+    for(int i=0;i1!=this->end();i++,i1++) szum+=*i1;
+    return szum;
+ 
 }
-	
-	template<class T>
-	T Gen<T>::GetSzorzat()
+     
+    template<class T>
+    T Gen<T>::GetSzorzat()
 {
-	iterator i1=this->begin();
-	T szorzat=1;
-	for(int i=0;i1!=this->end();i++,i1++) szorzat*=*i1;
-	return szorzat;
+    iterator i1=this->begin();
+    T szorzat=1;
+    for(int i=0;i1!=this->end();i++,i1++) szorzat*=*i1;
+    return szorzat;
 }
-	
-	template<class T>
-	double Gen<T>::GetAvg()
+     
+    template<class T>
+    double Gen<T>::GetAvg()
 {
-	return (double)this->GetSum()/(double)this->Getdb();
+    return (double)this->GetSum()/(double)this->Getdb();
 }
