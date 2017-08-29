@@ -5,12 +5,20 @@ Ezt a nagyházit a Programozás alapjai 2 tantárgyhoz készítettem a BME-s tan
 ## Feladat
 
 Készítsen GENERIKUS tömböt! Valósítsa meg a shell rendezést, mint az osztály tagfüggvényét.
+
 A tömb rendezéséhez használjon predikátumobjektumot.
+
 Valósítsa meg az összes értelmes műveletet operátor átdefiniálással (overload), de nem kell ragaszkodni mindenáron az operátorok átdefiniálásához!
+
 Amennyiben lehetséges használjon iterátort!
-Demonstrálja a működést külön modulként fordított tesztprogrammal! A programmal mutassa be a generikus szerkezet használatát több egyszerű
-adathalmazon, amit fájlból olvas be!
+
+Demonstrálja a működést külön modulként fordított tesztprogrammal! A programmal mutassa be a generikus szerkezet használatát több egyszerű adathalmazon, amit fájlból olvas be!
+
 A megoldáshoz NE használjon STL tárolót vagy algoritmust!
+
+## Dokumentáció
+
+[A pdf dokumentáció megtalálható itt.](https://github.com/lordblendi/cpp-programozas-alapjai-2-nhf/blob/master/docs/Szepes_Nora_Dokumentacio.pdf)
 
 ## Fordítás és futtatás
 
